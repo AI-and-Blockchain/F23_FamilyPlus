@@ -1,10 +1,10 @@
 # Welcome to Family+
-### Empowering Your Health through AI and Blockchain
 
-**Family+** is an innovative web application that leverages the power of AI and blockchain technology to revolutionize the way individuals understand and utilize their medical documents. This platform brings together cutting-edge features such as AI-enhanced document comprehension, a secure blockchain network, and a unique role-based system with Supervisors and Users.
+**Family+** is an innovative web application that leverages the power of AI and blockchain technology to revolutionize the way individuals understand and utilize their medical documents. This platform brings together cutting-edge features such as AI-enhanced document comprehension, a secure blockchain network, and a unique role-based system with Doctors and Patients. It's a groundbreaking project that merges AI and blockchain to empower individuals with a deeper understanding of their medical documents. We've introduced the roles of Supervisors and Users to assist and guide individuals through their health records, making medical terminology more accessible and promoting informed decision-making. By providing users with greater control over their health information, we aim to improve healthcare outcomes and potentially reduce costs. With **Family+**, you'll gain better control over your health information and make more informed healthcare decisions.
+
 
 ## Table of Contents
-  - [Project Description](#Project-Description)
+  <!-- - [Project Description](#Project-Description) -->
   - [Key Features](#key-features)
   - [How it Works](#how-it-works)
   - [Why Family+](#why-family)
@@ -12,13 +12,13 @@
   - [Disclaimer](#disclaimer)
 <!--- [Contributing](#contributing)-->
 <!--- [Support](#support)-->
-<!--- [License](#license)-->
+- [License](#license)
 
-## Project Description
+<!-- ## Project Description
 
-**Family+** is a groundbreaking project that merges AI and blockchain to empower individuals with a deeper understanding of their medical documents. We've introduced the roles of Supervisors and Users to assist and guide individuals through their health records, making medical terminology more accessible and promoting informed decision-making. By providing users with greater control over their health information, we aim to improve healthcare outcomes and potentially reduce costs.
+**Family+** is a groundbreaking project that merges AI and blockchain to empower individuals with a deeper understanding of their medical documents. We've introduced the roles of Supervisors and Users to assist and guide individuals through their health records, making medical terminology more accessible and promoting informed decision-making. By providing users with greater control over their health information, we aim to improve healthcare outcomes and potentially reduce costs. -->
 
-## Key Features
+### Key Features
 
 - **AI-Enhanced Document Comprehension**: Our AI system interprets complex medical documents, simplifying terminology and presenting information in a user-friendly manner.
 
@@ -30,7 +30,7 @@
 
 - **Enhanced Health Outcomes**: We believe that informed decision-making leads to better health outcomes, ultimately benefiting individuals and the healthcare system.
 
-## How it Works
+### How it Works
 
 Family+ combines AI and blockchain technology to offer a seamless user experience:
 
@@ -44,7 +44,7 @@ Family+ combines AI and blockchain technology to offer a seamless user experienc
 
 5. **Informed Decision-Making**: Armed with a better understanding of their health records, users can make informed healthcare decisions.
 
-## Why Family+
+### Why Family+
 
 Family+ is a game-changer in the healthcare industry for several reasons:
 
@@ -78,13 +78,13 @@ To get started with Family+:
 
 <!--If you have any questions, encounter issues, or want to get in touch with the Family+ team, please email us at support@familyplus.com.-->
 
-<!--## License-->
+### License
 
-<!--This project is licensed under the [MIT License](LICENSE). Feel free to use and modify the code to meet your needs.-->
+This project is licensed under the [Apache License](LICENSE).
 
-<!--Stay connected with your health, make informed decisions, and thrive with Family+, the ultimate platform for empowering your health through AI and blockchain.-->
 
-## Diagrams
 
-## Disclaimer 
+### Diagrams
+
+### Disclaimer 
 Family+ is not a substitute for professional medical advice or diagnosis. Always consult with a qualified healthcare provider for medical concerns.
