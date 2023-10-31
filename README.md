@@ -63,7 +63,7 @@ Llama 2 is built on the foundation of transformer architecture, a revolutionary 
   - Enhances Llama 2's performance by specializing it in specific tasks and domains.
   - Injects domain-specific knowledge, improves consistency, reduces bias, and adapts to user needs.
 
-(For more information on transformer architecture, see [Transformer Architecture](https://huggingface.co/docs/transformers/main/model_doc/transformer))
+(For more information on transformer architecture, see [Transformer Architecture](https://huggingface.co/docs/transformers/main/model_doc/transformer) and [FOCI LLM Users Group 20 Sep 2023](https://rensselaer.webex.com/recordingservice/sites/rensselaer/recording/bd89d2323a2e103cb5be00505681e571/playback))
 
 ##### Fine-Tuning Parameters
 Fine-tuning is a critical process for optimizing Llama 2. Key parameters to consider include:
@@ -78,7 +78,10 @@ Fine-tuning is a critical process for optimizing Llama 2. Key parameters to cons
 - **Temperature**:
   - Adjusting temperature to introduce more randomness into the model's outputs.
 
-(For examples and details on fine-tuning, see section (2) in [Llama 2 Documentation](https://huggingface.co/docs/transformers/main/model_doc/llama2))
+- **Datasets**:
+  - Various datasets can be found on [Hugging Face](https://huggingface.co/). In this project, we will use medical datas include medical terms, dialugues, and so on.
+
+(For examples and details on fine-tuning, see section (2) in [Llama 2 Documentation](https://huggingface.co/docs/transformers/main/model_doc/llama2) and [FOCI LLM Users Group 18 Oct 2023](https://tw.rpi.edu/sites/default/files/2023-10/10-18-LLM-User-Group.pdf))
 
 ##### Why Use Llama 2?
 - **Popularity**:
@@ -92,8 +95,6 @@ Fine-tuning is a critical process for optimizing Llama 2. Key parameters to cons
 
 - **Ease of Deployment**:
   - Easily deploy Llama 2 on your local machine for AI development.
-
-(For more information and resources, refer to the [Llama 2 User Group](https://tw.rpi.edu/sites/default/files/2023-10/10-18-LLM-User-Group.pdf))
 
 
 ### Blockchain Architecture
@@ -170,8 +171,6 @@ To get started with Family+:
 <!--## Support-->
 
 <!--If you have any questions, encounter issues, or want to get in touch with the Family+ team, please email us at support@familyplus.com.-->
-### References
-
 
 ### License
 
