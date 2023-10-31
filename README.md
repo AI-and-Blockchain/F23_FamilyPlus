@@ -5,7 +5,8 @@
 
 ## Table of Contents
   - [Key Features](#key-features)
-  - [How it Works](#how-it-works)
+  - [AI Models](#ai-models)
+  - [Blockchain Architecture](#blockchain-architecture)
   - [Diagrams](#diagrams)
   - [Disclaimer](#disclaimer)
   - [License](#license)
@@ -23,15 +24,85 @@
 
 - **Enhanced Health Outcomes**: We believe that informed decision-making leads to better health outcomes, ultimately benefiting individuals and the healthcare system.
 
-### How it Works
 
-Family+ combines AI and blockchain technology to offer a seamless user experience.
-- **Blockchain Architecture**:
+### AI Models
+#### Llama 2: High-Level Description and Rationale
 
-- **AI Algorithms/Models**:
-    - What is it?
-    - How does it work?
-    - Why we choose to use it instead of other AI algorithms/models?
+##### Introduction
+Llama 2, developed by Meta, is a second-generation open-source language model designed for various AI applications. This document provides a brief overview of what Llama 2 is, how it works, and why it is a popular choice in the AI community.
+
+##### What is Llama 2?
+- **Key Features**:
+  - Developed by Meta.
+  - Open-Source Language Model.
+  - Easy to Fine-Tune.
+
+Llama 2 is an enhanced version of the original Llama model, boasting several key advantages:
+- **Data Training**:
+  - Trained on a more diverse and recent dataset from publicly available internet data.
+  - Utilizes 40% more data than its predecessor (Llama 1).
+  - Doubles the context length, accommodating up to 4,000 tokens.
+
+- **Performance**:
+  - Outperforms other major open-source models like Falcon and MBT across multiple metrics.
+  - One of the most powerful open-source large language models available.
+
+(For more information, refer to [Llama 2 Documentation](https://huggingface.co/docs/transformers/main/model_doc/llama2))
+
+##### How does Llama 2 Work?
+Llama 2 is built on the foundation of transformer architecture, a revolutionary deep learning model for natural language processing and AI tasks. Key aspects of how it operates include:
+
+- **Transformer Architecture**:
+  - Utilizes self-attention mechanism, parallel processing, positional encoding, and stacked layers.
+  - Efficiently captures dependencies and relationships within data.
+  - Proven effectiveness in various AI tasks, including machine translation and sentiment analysis.
+
+- **Fine-Tuning**:
+  - Enhances Llama 2's performance by specializing it in specific tasks and domains.
+  - Injects domain-specific knowledge, improves consistency, reduces bias, and adapts to user needs.
+
+(For more information on transformer architecture, see [Transformer Architecture](https://huggingface.co/docs/transformers/main/model_doc/transformer))
+
+##### Fine-Tuning Parameters
+Fine-tuning is a critical process for optimizing Llama 2. Key parameters to consider include:
+
+- **Data Type**:
+  - Varying data types, such as float32, int8, int4, or even 1 bit, affecting memory and disk usage during training.
+
+- **Weight Adjustment**:
+  - Tailoring the model for specific use cases by modifying weight parameters.
+  - One common method is Low-Rank Adaptation (LoRA) using small matrices to generate a low-rank matrix added to the weights.
+
+- **Temperature**:
+  - Adjusting temperature to introduce more randomness into the model's outputs.
+
+(For examples and details on fine-tuning, see section (2) in [Llama 2 Documentation](https://huggingface.co/docs/transformers/main/model_doc/llama2))
+
+##### Why Use Llama 2?
+- **Popularity**:
+  - Llama 2 is one of the most popular open-resource large language models in the AI community.
+
+- **User Community**:
+  - A large user community provides access to fine-tuned models, diverse datasets, and free instructions online.
+
+- **High Performance**:
+  - Llama 2 delivers outstanding performance in various AI applications.
+
+- **Ease of Deployment**:
+  - Easily deploy Llama 2 on your local machine for AI development.
+
+(For more information and resources, refer to the [Llama 2 User Group](https://tw.rpi.edu/sites/default/files/2023-10/10-18-LLM-User-Group.pdf))
+
+##### References
+- [Llama 2 Documentation](https://huggingface.co/docs/transformers/main/model_doc/llama2)
+- [Transformer Architecture](https://huggingface.co/docs/transformers/main/model_doc/transformer)
+- [Llama 2 User Group](https://tw.rpi.edu/sites/default/files/2023-10/10-18-LLM-User-Group.pdf)
+
+
+
+### Blockchain Architecture
+
+
 
 
 ### Diagrams
