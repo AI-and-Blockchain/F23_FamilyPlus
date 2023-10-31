@@ -25,6 +25,7 @@
 
 - **Enhanced Health Outcomes**: We believe that informed decision-making leads to better health outcomes, ultimately benefiting individuals and the healthcare system.
 
+---
 
 ### AI Models
 #### Llama 2: High-Level Description and Rationale
@@ -96,6 +97,7 @@ Fine-tuning is a critical process for optimizing Llama 2. Key parameters to cons
 - **Ease of Deployment**:
   - Easily deploy Llama 2 on your local machine for AI development.
 
+---
 
 ### Blockchain Architecture
 #### Ethereum: High-Level Description and Rationale
@@ -129,7 +131,7 @@ Ethereum is a decentralized, open-source blockchain platform that was created to
  -While Ethereum can be adapted for permissioned networks, privacy remains a concern. We need to implement additional privacy measures to protect sensitive health data.
 
 
-
+---
 
 ### Diagrams
 1. **High-level component diagram**:
@@ -170,7 +172,7 @@ User: Engages the project's ChatBot for the purpose of posing queries and solici
 <img src="./Diagrams/Sequence2.png" alt="drawing" width="700"/>
 
 This sequence diagram delineates the workflow pertaining to the blockchain component of the project. It elucidates the interactions among users, healthcare providers (specifically, Provider 1, representing a doctor, and Provider 2, representing a nurse), and the blockchain for the purpose of accessing and managing medical records.
-- **User**: Initiates the interaction by engaging with a healthcare provider, specifically a doctor (Provider 1), and subsequently accessing their medical records stored in the blockchain by utilizing their respective public key (Public Key 1).
+- **User**: Initiates the interaction by engaging with a healthcare provider, specifically a doctor (Provider 1), and subsequently accessing their medical records stored in the blockchain by utilizing their respective public key (Public Key 1). User can also choose who to share the medical record or the lab test result. For example, the dentist who performed the monthly teeth cleaning doesn't need to see the result of the blood test of the user.
 - **Doctor (Provider 1)**: Utilizes their designated public key (Public Key 1) to access the medical records stored within the blockchain.
 - **Blockchain**: Serves as the intermediary platform that facilitates the secure retrieval and provision of medical records, thereby enabling the doctor and user to access pertinent medical data.
 - **Nurse (Provider 2)**: In the event of a user undergoing a medical procedure, particularly a blood test, the nurse (Provider 2) seeks user consent regarding the sharing of test results. In standard circumstances, the user retains decision-making authority over the sharing of these results.
@@ -178,7 +180,7 @@ This sequence diagram delineates the workflow pertaining to the blockchain compo
 
 
 
-
+---
 
 ### Why Family+
 
@@ -192,27 +194,6 @@ Family+ is a game-changer in the healthcare industry for several reasons:
 
 - **Reduced Healthcare Costs**: With better-informed decisions, we anticipate a potential reduction in healthcare costs.
 
-<!-- ## Getting Started
-
-To get started with Family+:
-
-1. Sign up for an account on our platform.
-
-2. Upload your medical documents.
-
-3. Explore the AI-enhanced document summaries.
-
-4. Connect with Supervisors for further guidance if needed.
-
-5. Experience the power of understanding your health information like never before. -->
-
-<!--## Contributing-->
-
-<!--We welcome contributions from the open-source community. If you'd like to contribute to the development of **Family+**, please refer to our [Contribution Guidelines](CONTRIBUTING.md).-->
-
-<!--## Support-->
-
-<!--If you have any questions, encounter issues, or want to get in touch with the Family+ team, please email us at support@familyplus.com.-->
 
 ### License
 
