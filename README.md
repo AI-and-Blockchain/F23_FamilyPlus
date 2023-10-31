@@ -98,6 +98,35 @@ Fine-tuning is a critical process for optimizing Llama 2. Key parameters to cons
 
 
 ### Blockchain Architecture
+#### Ethereum: High-Level Description and Rationale
+Ethereum is a decentralized, open-source blockchain platform that was created to enable the development of decentralized applications (DApps) and smart contracts.
+
+#### Why Use Ethereum?
+-**Security and Immutability**:
+ -Health data is sensitive, and ensuring the integrity and security of this data is crucial. Ethereum’s consensus mechanism and encryption techniques can help maintain data security and prevent unauthorized access or modification.
+
+-**Smart Contracts and Familiarity**:
+ -We can deploy smart contracts, which are self-executing, tamper-proof agreements that can automate various processes in your health-data network. We can use smart contracts to manage access control, consent management, and data sharing, and we have a working familiarity with it from previous Solidity lab experiences.
+
+-**Interoperability**:
+ -Ethereum has a wide range of developer tools, libraries, and APIs, making it easier to integrate with existing systems and applications. This can be especially useful in healthcare, where interoperability between different systems and providers is a significant challenge.
+
+-**Decentralization**:
+ -This can enhance trust and reduce the risk of data manipulation or unauthorized changes. It's particularly important for health data, where trust and data integrity are paramount.
+
+-**Permissioned Access**:
+ -It is possible to create a permissioned network on top of Ethereum by controlling access to the health-data blockchain by managing the permissions of nodes, users, and smart contracts.
+
+-**Community and Ecosystem**:
+ -Ethereum has a large and active development community, which means you can tap into a wealth of resources, tools, and expertise to support your health-data blockchain project.
+
+#### Some Limitations of Ethereum
+-**Scalability**:
+ -Ethereum has faced challenges with scalability, which may affect the performance of a health-data network with high transaction volumes.
+-**Cost**:
+ -Using Ethereum can be expensive, especially when deploying smart contracts and conducting frequent transactions. The cost implications need to be considered carefully, particularly for a permissioned network.
+-**Privacy**:
+ -While Ethereum can be adapted for permissioned networks, privacy remains a concern. We need to implement additional privacy measures to protect sensitive health data.
 
 
 
@@ -120,19 +149,32 @@ Fine-tuning is a critical process for optimizing Llama 2. Key parameters to cons
             * Data Encryption for User: The Provider encrypts both the IPFS link and the ESK using the User's public key (PK). This ensures that only the User, possessing the corresponding private key (SK), can access and decrypt the data.
             * Blockchain Entry: The encrypted data, including the IPFS link and ESK, is added to the blockchain using a smart contract. This entry is uniquely identified and associated with a predefined string identifier, providing a secure and immutable record.
 
-        * **User**
-            * Responsibilities and Actions
-                * Blockchain Monitoring: The User periodically monitors the blockchain for any updates or new entries.
-                * Identification of New Document: Upon identifying a new document entry, the User becomes aware of a new data addition to the blockchain.
-                * Data Retrieval: The User retrieves the encrypted cyphertext from the blockchain, preparing to access the document.
-                * cyphertext Decryption: Using their private key (SK), the User decrypts the encrypted cyphertext, revealing the embedded ESK and the IPFS link.
-                * IPFS Interaction: The User uses the obtained IPFS link to access the encrypted document stored on the IPFS network, ensuring that it remains secure and available for retrieval.
-                * Document Decryption: Finally, the User decrypts the document using the ESK, ensuring that the original document is accessible for their use.
+    * **User**
+        * Responsibilities and Actions
+            * Blockchain Monitoring: The User periodically monitors the blockchain for any updates or new entries.
+            * Identification of New Document: Upon identifying a new document entry, the User becomes aware of a new data addition to the blockchain.
+            * Data Retrieval: The User retrieves the encrypted cyphertext from the blockchain, preparing to access the document.
+            * cyphertext Decryption: Using their private key (SK), the User decrypts the encrypted cyphertext, revealing the embedded ESK and the IPFS link.
+            * IPFS Interaction: The User uses the obtained IPFS link to access the encrypted document stored on the IPFS network, ensuring that it remains secure and available for retrieval.
+            * Document Decryption: Finally, the User decrypts the document using the ESK, ensuring that the original document is accessible for their use.
 
 2. **Sequence Diagrams**:
 <img src="./Diagrams/Sequence1.png" alt="drawing" width="400"/>
+
+This sequence diagram delineates the operational dynamics of the AI)component within the project. It encapsulates the procedures by which users can obtain their medical records from their personal page in our website(i.e., the database) and engage with a conversational AI, referred to as the "ChatBot," for the purpose of seeking information and responses to their inquiries.
+
+- **User**: Commences the interaction by navigating to the project's website and subsequently procuring their medical records from their individualized web-based personal page.
+- **Website**: Fulfills the role of presenting the user's medical records within their personal online portal.
+User: Engages the project's ChatBot for the purpose of posing queries and soliciting information pertinent to their medical records or related matters.
+- **ChatBot**: Assumes the role of a conversational interface, responding to user inquiries by providing relevant information and assistance in a conversational manner.
 <img src="./Diagrams/Sequence2.png" alt="drawing" width="700"/>
 
+This sequence diagram delineates the workflow pertaining to the blockchain component of the project. It elucidates the interactions among users, healthcare providers (specifically, Provider 1, representing a doctor, and Provider 2, representing a nurse), and the blockchain for the purpose of accessing and managing medical records.
+- **User**: Initiates the interaction by engaging with a healthcare provider, specifically a doctor (Provider 1), and subsequently accessing their medical records stored in the blockchain by utilizing their respective public key (Public Key 1).
+- **Doctor (Provider 1)**: Utilizes their designated public key (Public Key 1) to access the medical records stored within the blockchain.
+- **Blockchain**: Serves as the intermediary platform that facilitates the secure retrieval and provision of medical records, thereby enabling the doctor and user to access pertinent medical data.
+- **Nurse (Provider 2)**: In the event of a user undergoing a medical procedure, particularly a blood test, the nurse (Provider 2) seeks user consent regarding the sharing of test results. In standard circumstances, the user retains decision-making authority over the sharing of these results.
+- **Family Member**: In cases of medical emergencies, the involvement of a family member is stipulated as a requisite for authorizing the sharing of test results. Notably, in scenarios where the user is below the age of 18, the management of their medical records necessitates the oversight and approval of their parents or legal guardians.
 
 
 
