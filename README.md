@@ -10,6 +10,7 @@
   - [Diagrams](#diagrams)
   - [Disclaimer](#disclaimer)
   - [License](#license)
+  - [Reference](#reference)
 
 
 ### Key Features
@@ -38,6 +39,7 @@ Llama 2, developed by Meta, is a second-generation open-source language model de
   - Easy to Fine-Tune.
 
 Llama 2 is an enhanced version of the original Llama model, boasting several key advantages:
+
 - **Data Training**:
   - Trained on a more diverse and recent dataset from publicly available internet data.
   - Utilizes 40% more data than its predecessor (Llama 1).
@@ -93,10 +95,7 @@ Fine-tuning is a critical process for optimizing Llama 2. Key parameters to cons
 
 (For more information and resources, refer to the [Llama 2 User Group](https://tw.rpi.edu/sites/default/files/2023-10/10-18-LLM-User-Group.pdf))
 
-##### References
-- [Llama 2 Documentation](https://huggingface.co/docs/transformers/main/model_doc/llama2)
-- [Transformer Architecture](https://huggingface.co/docs/transformers/main/model_doc/transformer)
-- [Llama 2 User Group](https://tw.rpi.edu/sites/default/files/2023-10/10-18-LLM-User-Group.pdf)
+
 
 
 
@@ -163,3 +162,8 @@ This project is licensed under the [Apache License](LICENSE).
 
 ### Disclaimer 
 Family+ is not a substitute for professional medical advice or diagnosis. Always consult with a qualified healthcare provider for medical concerns.
+
+### Reference
+- [Llama 2 Documentation](https://huggingface.co/docs/transformers/main/model_doc/llama2)
+- [Transformer Architecture](https://huggingface.co/docs/transformers/main/model_doc/transformer)
+- [Llama 2 User Group](https://tw.rpi.edu/sites/default/files/2023-10/10-18-LLM-User-Group.pdf)
