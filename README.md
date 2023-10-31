@@ -165,9 +165,8 @@ Ethereum is a decentralized, open-source blockchain platform that was created to
 
 This sequence diagram delineates the operational dynamics of the AI)component within the project. It encapsulates the procedures by which users can obtain their medical records from their personal page in our website(i.e., the database) and engage with a conversational AI, referred to as the "ChatBot," for the purpose of seeking information and responses to their inquiries.
 
-- **User**: Commences the interaction by navigating to the project's website and subsequently procuring their medical records from their individualized web-based personal page.
+- **User**: Commences the interaction by navigating to the project's website and subsequently procuring their medical records from their individualized web-based personal page. User can also engage the ChatBot for the purpose of posing queries and soliciting information pertinent to their medical records or related matters.
 - **Website**: Fulfills the role of presenting the user's medical records within their personal online portal.
-User: Engages the project's ChatBot for the purpose of posing queries and soliciting information pertinent to their medical records or related matters.
 - **ChatBot**: Assumes the role of a conversational interface, responding to user inquiries by providing relevant information and assistance in a conversational manner.
 <img src="./Diagrams/Sequence2.png" alt="drawing" width="700"/>
 
