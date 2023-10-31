@@ -6,12 +6,9 @@
 ## Table of Contents
   - [Key Features](#key-features)
   - [How it Works](#how-it-works)
-  - [Why Family+](#why-family)
   - [Diagrams](#diagrams)
   - [Disclaimer](#disclaimer)
   - [License](#license)
-
-
 
 
 ### Key Features
@@ -32,6 +29,9 @@ Family+ combines AI and blockchain technology to offer a seamless user experienc
 - **Blockchain Architecture**:
 
 - **AI Algorithms/Models**:
+    - What is it?
+    - How does it work?
+    - Why we choose to use it instead of other AI algorithms/models?
 
 
 ### Diagrams
