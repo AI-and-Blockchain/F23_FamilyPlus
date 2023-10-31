@@ -135,7 +135,7 @@ Ethereum is a decentralized, open-source blockchain platform that was created to
 
 ### Diagrams
 1. **High-level component diagram**:
-* <img src="./Diagrams/1.png" alt="drawing" width="500"/>
+* <img src="./Diagrams/2.png" alt="drawing" width="500"/>
 * Some explanation of abbreviation:
     *  SK = Secret Key; PK = Public Key; ESK = Ethermeral Symmetric Key; Enc = Encrypt
     * PK_U = Public Key of User; PK_P1 = Public Key of Provider 1
