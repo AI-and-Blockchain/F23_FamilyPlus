@@ -96,9 +96,6 @@ Fine-tuning is a critical process for optimizing Llama 2. Key parameters to cons
 (For more information and resources, refer to the [Llama 2 User Group](https://tw.rpi.edu/sites/default/files/2023-10/10-18-LLM-User-Group.pdf))
 
 
-
-
-
 ### Blockchain Architecture
 
 
@@ -110,7 +107,26 @@ Fine-tuning is a critical process for optimizing Llama 2. Key parameters to cons
 * Some explanation of abbreviation:
     *  SK = Secret Key; PK = Public Key; ESK = Ethermeral Symmetric Key; Enc = Encrypt
     * PK_U = Public Key of User; PK_P1 = Public Key of Provider 1
+* Description of the diagram:
+    * The high-level component diagram for the project encompasses two primary entities: the Provider and the User, each equipped with a pair of asymmetric keys, denoted as (SK, PK) for secure communication.
 
+    * **Provider**
+        * Responsibilities and Actions
+            * Document Preparation: The Provider initiates the process with the possession of a document that they intend to share with the User.
+            * Ephemeral Symmetric Key Generation: To ensure data confidentiality, the Provider generates an ephemeral symmetric key (ESK), a temporary key used exclusively for this specific data exchange.
+            * Document Encryption: Utilizing the ESK, the Provider encrypts the document, securing it against unauthorized access.
+            * IPFS Integration: The encrypted document is then uploaded to the InterPlanetary File System (IPFS), a distributed storage system for decentralized data storage. This action results in the acquisition of a unique IPFS link associated with the encrypted document.
+            * Data Encryption for User: The Provider encrypts both the IPFS link and the ESK using the User's public key (PK). This ensures that only the User, possessing the corresponding private key (SK), can access and decrypt the data.
+            * Blockchain Entry: The encrypted data, including the IPFS link and ESK, is added to the blockchain using a smart contract. This entry is uniquely identified and associated with a predefined string identifier, providing a secure and immutable record.
+
+        * **User**
+            * Responsibilities and Actions
+                * Blockchain Monitoring: The User periodically monitors the blockchain for any updates or new entries.
+                * Identification of New Document: Upon identifying a new document entry, the User becomes aware of a new data addition to the blockchain.
+                * Data Retrieval: The User retrieves the encrypted cyphertext from the blockchain, preparing to access the document.
+                * cyphertext Decryption: Using their private key (SK), the User decrypts the encrypted cyphertext, revealing the embedded ESK and the IPFS link.
+                * IPFS Interaction: The User uses the obtained IPFS link to access the encrypted document stored on the IPFS network, ensuring that it remains secure and available for retrieval.
+                * Document Decryption: Finally, the User decrypts the document using the ESK, ensuring that the original document is accessible for their use.
 
 2. **Sequence Diagrams**:
 <img src="./Diagrams/Sequence1.png" alt="drawing" width="400"/>
