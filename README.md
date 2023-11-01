@@ -168,7 +168,7 @@ This sequence diagram delineates the operational dynamics of the AI)component wi
 - **User**: Commences the interaction by navigating to the project's website and subsequently procuring their medical records from their individualized web-based personal page. User can also engage the ChatBot for the purpose of posing queries and soliciting information pertinent to their medical records or related matters.
 - **Website**: Fulfills the role of presenting the user's medical records within their personal online portal.
 - **ChatBot**: Assumes the role of a conversational interface, responding to user inquiries by providing relevant information and assistance in a conversational manner.
-<img src="./Diagrams/Sequence2.png" alt="drawing" width="700"/>
+<img src="./Diagrams/Sequence2_updated.png" alt="drawing" width="700"/>
 
 This sequence diagram delineates the workflow pertaining to the blockchain component of the project. It elucidates the interactions among users, healthcare providers (specifically, Provider 1, representing a doctor, and Provider 2, representing a nurse), and the blockchain for the purpose of accessing and managing medical records.
 - **User**: Initiates the interaction by engaging with a healthcare provider, specifically a doctor (Provider 1), and subsequently accessing their medical records stored in the blockchain by utilizing their respective public key (Public Key 1). User can also choose who to share the medical record or the lab test result. For example, the dentist who performed the monthly teeth cleaning doesn't need to see the result of the blood test of the user.
