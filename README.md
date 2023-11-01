@@ -161,23 +161,9 @@ Ethereum is a decentralized, open-source blockchain platform that was created to
             * Document Decryption: Finally, the User decrypts the document using the ESK, ensuring that the original document is accessible for their use.
 
 2. **Sequence Diagrams**:
-<img src="./Diagrams/Sequence1.png" alt="drawing" width="400"/>
+<img src="./Diagrams/SD.png" alt="drawing" width="800"/>
 
-This sequence diagram delineates the operational dynamics of the AI)component within the project. It encapsulates the procedures by which users can obtain their medical records from their personal page in our website(i.e., the database) and engage with a conversational AI, referred to as the "ChatBot," for the purpose of seeking information and responses to their inquiries.
-
-- **User**: Commences the interaction by navigating to the project's website and subsequently procuring their medical records from their individualized web-based personal page. User can also engage the ChatBot for the purpose of posing queries and soliciting information pertinent to their medical records or related matters.
-- **Website**: Fulfills the role of presenting the user's medical records within their personal online portal.
-- **ChatBot**: Assumes the role of a conversational interface, responding to user inquiries by providing relevant information and assistance in a conversational manner.
-<img src="./Diagrams/Sequence2.png" alt="drawing" width="700"/>
-
-This sequence diagram delineates the workflow pertaining to the blockchain component of the project. It elucidates the interactions among users, healthcare providers (specifically, Provider 1, representing a doctor, and Provider 2, representing a nurse), and the blockchain for the purpose of accessing and managing medical records.
-- **User**: Initiates the interaction by engaging with a healthcare provider, specifically a doctor (Provider 1), and subsequently accessing their medical records stored in the blockchain by utilizing their respective public key (Public Key 1). User can also choose who to share the medical record or the lab test result. For example, the dentist who performed the monthly teeth cleaning doesn't need to see the result of the blood test of the user.
-- **Doctor (Provider 1)**: Utilizes their designated public key (Public Key 1) to access the medical records stored within the blockchain.
-- **Blockchain**: Serves as the intermediary platform that facilitates the secure retrieval and provision of medical records, thereby enabling the doctor and user to access pertinent medical data.
-- **Nurse (Provider 2)**: In the event of a user undergoing a medical procedure, particularly a blood test, the nurse (Provider 2) seeks user consent regarding the sharing of test results. In standard circumstances, the user retains decision-making authority over the sharing of these results.
-- **Family Member**: In cases of medical emergencies, the involvement of a family member is stipulated as a requisite for authorizing the sharing of test results. Notably, in scenarios where the user is below the age of 18, the management of their medical records necessitates the oversight and approval of their parents or legal guardians.
-
-
+This sequence diagram delineates the workflow  of the project. It elucidates the interactions among users, general provider, Portal on our website, IPFS, Smart contract, third party provider, chatBot, and family members for the purpose of accessing and managing medical record and the purpose of seeking information and responses to users' inquiries.
 
 ---
 
