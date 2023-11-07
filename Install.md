@@ -22,7 +22,7 @@ To install Family+, follow these steps:
 ```npm install```
 ## Running Family+
 
-To run Campus-Connect, use the following command:
+To run Family+, use the following command:
 ```npm run dev```
 
 
