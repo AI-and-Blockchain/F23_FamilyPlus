@@ -1,0 +1,38 @@
+{
+  "name": "swipe",
+  "description": "Swipe component with touch support",
+  "version": "1.7.7",
+  "keywords": [
+    "carousel",
+    "slide",
+    "slides",
+    "swipe",
+    "touch",
+    "ui"
+  ],
+  "dependencies": {
+    "component-emitter": "1.2.0",
+    "component-event": "0.1.4",
+    "component-events": "1.0.9",
+    "has-translate3d": "0.0.3",
+    "touchaction-property": "0.0.1",
+    "transform-property": "0.0.1",
+    "transitionend-property": "0.0.2",
+    "computed-style-component": "0.1.0"
+  },
+  "browser": {
+    "computed-style": "computed-style-component",
+    "emitter": "component-emitter",
+    "event": "component-event"
+  },
+  "license": "MIT",
+  "component": {
+    "scripts": {
+      "swipe/index.js": "index.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/component/swipe.git"
+  }
+}

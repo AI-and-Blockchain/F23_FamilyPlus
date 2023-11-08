@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>component/swipe demo</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        padding: 5px;
+        font: 14px "Helvetica Neue", Helvetica, Arial;
+      }
+      #container {
+        width: 295px;
+        height: 380px;
+        overflow: hidden;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        height: 380px;
+      }
+      ul li {
+        display: table-cell;
+        background: #f8f8f8;
+        color: #888;
+        width: 300px;
+        height: 380px;
+        list-style: none;
+        margin: 0;
+        padding: 50px;
+        -webkit-user-select: none;
+        border: 1px solid #ddd;
+        border-radius: 2px;
+      }
+      button {
+        margin: 5px 0;
+        border: 1px solid #ddd;
+        padding: 5px 10px;
+        background: #eee;
+        border-radius: 2px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #fff;
+      }
+
+      .reader {
+        height: 100%;
+        width: 100%;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <ul>
+        <li>
+          <div class="reader">
+            <h1>One</h1>
+            <p>This is the first example page. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id mauris arcu. Ut vestibulum, neque sit amet lacinia dictum, nibh neque commodo orci, at tincidunt neque turpis a nulla. Donec sit amet imperdiet eros. Etiam et eros in lacus convallis pretium. Integer sit amet aliquam ligula. Ut id lorem elit, ut commodo nulla. Suspendisse id tortor nec sem commodo tincidunt. Curabitur ligula sem, gravida id adipiscing non, consequat sit amet neque. Sed hendrerit varius consequat. Etiam vel purus at est pretium commodo. Proin convallis tempor fringilla. Pellentesque non quam vitae ipsum aliquet auctor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam non mauris ipsum. Nunc vitae ipsum quis augue sagittis accumsan.</p>
+          </div>
+        </li>
+
+        <li>
+          <h1>Two</h1>
+          <p>This is the second example page.</p>
+
+        </li>
+
+        <li>
+          <h1>Three</h1>
+          <p>This is the third example page.</p>
+        </li>
+
+        <li>
+          <h1>Four</h1>
+          <p>This is the fourth example page.</p>
+        </li>
+      </ul>
+    </div>
+
+    <script src="../build/build.js"></script>
+    <script>
+      var assert = require('assert');
+      var swipe = require('swipe');
+      var el = document.querySelector('#container');
+      var s = swipe(el);
+
+      function nth(n) {
+        return el.querySelector('li:nth-child(' + n + ')');
+      }
+
+      // .next() / .prev()
+
+      assert(0 == s.current)
+      assert(nth(1) == s.currentEl)
+      assert(s.isFirst())
+
+      s.next()
+      assert(1 == s.current)
+      assert(nth(2) == s.currentEl)
+
+      s.prev()
+      assert(0 == s.current)
+      assert(nth(1) == s.currentEl)
+
+      s.next()
+      assert(1 == s.current)
+      assert(nth(2) == s.currentEl)
+
+      s.next()
+      assert(2 == s.current)
+      assert(nth(3) == s.currentEl)
+
+      s.next()
+      assert(3 == s.current)
+      assert(nth(4) == s.currentEl)
+      assert(s.isLast())
+
+      s.next()
+      assert(3 == s.current)
+      assert(nth(4) == s.currentEl)
+      assert(s.isLast())
+
+      // .show()
+
+      s.show(0)
+      assert(0 == s.current)
+      assert(nth(1) == s.currentEl)
+
+      // out of bounds
+
+      s.show(-5)
+      assert(0 == s.current)
+
+      s.show(15)
+      assert(3 == s.current)
+
+      // cycling
+
+      s.show(0);
+
+      s.cycle();
+      assert(1 == s.current)
+      s.cycle();
+      assert(2 == s.current)
+      s.cycle();
+      assert(3 == s.current)
+      s.cycle();
+      assert(0 == s.current)
+      s.cycle();
+      assert(1 == s.current)
+
+      // display: none
+
+      nth(1).style.display = 'none' // 0
+      nth(3).style.display = 'none' // 2
+      s.refresh()
+
+      s.show(0)
+      assert(1 == s.current)
+      assert(nth(2) == s.currentEl)
+
+      s.show(3)
+      assert(s.isLast())
+
+      // out of bounds with display: none
+
+      s.show(-5)
+      assert(1 == s.current)
+
+      s.show(15)
+      assert(3 == s.current)
+
+      // cycling with hidden
+
+      s.show(0);
+
+      s.cycle();
+      assert(3 == s.current)
+      s.cycle();
+      assert(1 == s.current)
+      s.cycle();
+      assert(3 == s.current)
+
+      // removal
+
+      // addition
+    </script>
+  </body>
+</html>

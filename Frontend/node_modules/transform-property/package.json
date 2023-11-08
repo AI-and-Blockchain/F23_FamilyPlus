@@ -1,0 +1,9 @@
+{
+  "name": "transform-property",
+  "version": "0.0.1",
+  "component": {
+    "scripts": {
+      "transform-property/index.js": "index.js"
+    }
+  }
+}
