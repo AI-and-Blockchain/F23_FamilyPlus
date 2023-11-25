@@ -1,9 +1,6 @@
-import Logo from '../image/logo.png';
+import Logo from '../image/home.png';
 import { Link } from 'react-router-dom';
 
-/* 
-creates the header for the website including the logo and the buttons to navigate
-*/
 export default function Headers() {
     return (
         <header className="bg-white-300">
@@ -19,6 +16,14 @@ export default function Headers() {
                     <ul className="flex space-x-3">
                         <li>
                             <Link
+                                to="/connect"
+                                className="font-bold px-4 py-2 rounded-lg hover:bg-red-600 transition-colors duration-300"
+                            >Login</Link>
+                        </li>
+                    </ul>
+                    <ul className="flex space-x-3">
+                        <li>
+                            <Link
                                 to="/contact-us"
                                 className="font-bold px-4 py-2 rounded-lg hover:bg-red-600 transition-colors duration-300"
                             >Contact Us</Link>
@@ -26,7 +31,6 @@ export default function Headers() {
                     </ul>
                 </nav>
             </div>
-
 
         </header>
     );

@@ -1,8 +1,7 @@
-import { Button, Box, Text } from "@chakra-ui/react";
 import { useEthers, useEtherBalance } from "@usedapp/core";
 
 export default function ConnectButton() {
-  const {activateBrowserWallet, account } = useEthers();
+  const { activateBrowserWallet, account } = useEthers();
   const etherBalance = useEtherBalance(account);
 
   function handleConnectWallet() {
@@ -10,23 +9,17 @@ export default function ConnectButton() {
   }
 
   return account ? (
-    <Box>
-      <Text color="white" fontSize="md">
-        // etherBalance will be an object, so we stringify it 
+    <div className="bg-gray-800 p-4 rounded-lg">
+      <p className="text-white text-md">
         {etherBalance && JSON.stringify(etherBalance)} ETH
-      </Text>
-    </Box>
+      </p>
+    </div>
   ) : (
-    <Button onClick={handleConnectWallet}
-            fontWeight="bold"
-            py="4" // Increase the vertical padding
-            px="8" // Increase the horizontal padding
-            rounded="lg"
-            fontSize="xl" // Increase the font size
-            _hover={{   bgGradient: "linear(to-r, purple.400, blue.500)",
-            color: "white",}}
+    <button
+      onClick={handleConnectWallet}
+      className="bg-gradient-to-r from-purple-400 to-blue-500 text-white font-bold py-4 px-8 rounded-lg text-xl hover:bg-purple-500"
     >
-      Connect to your metamask wallet
-    </Button>
+      Connect to your Metamask wallet
+    </button>
   );
 }

@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { Flex } from "@chakra-ui/react";
 
 type Props = {
   children?: ReactNode;
@@ -7,14 +6,8 @@ type Props = {
 
 export default function Layout({ children }: Props) {
   return (
-    <Flex
-      minH="100vh"
-      bgGradient="linear(to-r, orange.300, yellow.300, red.200)"
-      alignItems="center"
-      justifyContent="center"
-      flexDirection="column" // Align items in a column
-    >
+    <div className="min-h-screen bg-gradient-to-r from-orange-300 via-yellow-300 to-red-200 flex items-center justify-center flex-col">
       {children}
-    </Flex>
+    </div>
   );
 }
