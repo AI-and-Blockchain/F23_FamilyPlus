@@ -17,8 +17,16 @@ export default function ConnectButton() {
       </Text>
     </Box>
   ) : (
-    <Button onClick={handleConnectWallet}>
-      Connect to a wallet
+    <Button onClick={handleConnectWallet}
+            fontWeight="bold"
+            py="4" // Increase the vertical padding
+            px="8" // Increase the horizontal padding
+            rounded="lg"
+            fontSize="xl" // Increase the font size
+            _hover={{   bgGradient: "linear(to-r, purple.400, blue.500)",
+            color: "white",}}
+    >
+      Connect to your metamask wallet
     </Button>
   );
 }
