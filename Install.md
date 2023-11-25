@@ -33,5 +33,3 @@ The application will start running at `http://localhost:3000` (or another port i
 
 To create a production build of Family+, use the following command:
 ```npm run build```
-
-The build files will be in the `dist` directory.
