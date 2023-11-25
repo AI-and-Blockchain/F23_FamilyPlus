@@ -1,8 +1,19 @@
 import React from "react";
-import SolutionStep from "./SolutionStep";
 import "../Styles/About.css";
 
-function About() {
+interface SolutionStepProps {
+  title: string;
+  description: string;
+}
+
+const SolutionStep: React.FC<SolutionStepProps> = ({ title, description }) => (
+  <div>
+    <h4>{title}</h4>
+    <p>{description}</p>
+  </div>
+);
+
+const About: React.FC = () => {
   return (
     <div className="about-section" id="about">
       <div className="about-image-content">

@@ -1,17 +1,23 @@
-// src/pages/LSPage.jsx
+// src/pages/LSPage.tsx
 import React from 'react';
 import Login from '../components/Login';
 import Signup from '../components/SignUp';
 
-const SignupLogin = () => {
+interface UserData {
+  // Define the structure of the user data
+  // (Update this according to the actual structure of your user data)
+  // For example: name: string, email: string, etc.
+}
+
+const SignupLogin: React.FC = () => {
   // Callback function to handle login
-  const handleLogin = (userData) => {
+  const handleLogin = (userData: UserData) => {
     console.log('Login successful:', userData);
     // Add any additional logic for successful login, such as redirecting to another page
   };
 
   // Callback function to handle signup
-  const handleSignup = (userData) => {
+  const handleSignup = (userData: UserData) => {
     console.log('Signup successful:', userData);
     // Add any additional logic for successful signup, such as redirecting to another page
   };

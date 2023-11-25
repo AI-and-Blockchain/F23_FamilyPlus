@@ -1,21 +1,37 @@
 import React from 'react';
 
-const Signup = ({ onSignup }) => {
+interface SignupProps {
+  onSignup: (user: { address: string; username: string }) => void;
+}
+
+declare global {
+  interface Window {
+    ethereum?: MetaMaskInpageProvider;
+  }
+}
+
+interface MetaMaskInpageProvider {
+  request: (args: { method: string }) => Promise<any>;
+  // Add any other properties specific to MetaMaskInpageProvider
+}
+
+const Signup: React.FC<SignupProps> = ({ onSignup }) => {
   // Function to handle the signup process via MetaMask
-  const handleSignup = async () => {
+  const handleSignup = async (): Promise<void> => {
     try {
       // Check if MetaMask is installed
-      if (window.ethereum) {
+      const ethereum = window.ethereum as MetaMaskInpageProvider | undefined;
+      if (ethereum) {
         // Request account access if needed
-        await window.ethereum.request({ method: 'eth_requestAccounts' });
+        await ethereum.request({ method: 'eth_requestAccounts' });
 
         // Get the selected account
-        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        const accounts = await ethereum.request({ method: 'eth_accounts' });
 
         // Check if an account is available
         if (accounts.length > 0) {
           // Get the network ID
-          const networkId = await window.ethereum.request({ method: 'net_version' });
+          const networkId = await ethereum.request({ method: 'net_version' });
 
           // Check if connected to the correct network (replace '1' with the desired network ID)
           if (networkId === '1') {

@@ -1,10 +1,9 @@
+import React from 'react';
 import Headers from '../components/Header';
 import ContactUs from '../components/ContactUs';
 import Footer from '../components/Footer';
 
-
-export default function ContactUsPage() {
-
+const ContactUsPage: React.FC = () => {
     return (
         <div>
             <Headers />
@@ -12,4 +11,6 @@ export default function ContactUsPage() {
             <Footer />
         </div>
     );
-}
+};
+
+export default ContactUsPage;
