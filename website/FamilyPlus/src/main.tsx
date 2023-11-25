@@ -1,10 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App"
+import { DAppProvider } from "@usedapp/core";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* 
+       Wrap our app in the provider, config is required, 
+        but can be left as an empty object: 
+    */}
+    <DAppProvider config={{}}>
+      <App />
+    </DAppProvider>
   </React.StrictMode>,
-)
+  document.getElementById("root")
+);
