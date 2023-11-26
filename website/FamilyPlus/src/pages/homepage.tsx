@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container, Heading, Text } from '@chakra-ui/react';
 import Header from '../component/header';
 import Footer from '../component/footer';
 
@@ -6,11 +7,11 @@ const Homepage: React.FC = () => {
     return (
         <div>
             <Header />
-            <main className="container mx-auto mt-8 p-4">
-                <h2 className="text-3xl font-bold mb-4">
+            <Container maxW="container.lg" mt="8" p="4">
+                <Heading as="h2" size="xl" fontWeight="bold" mb="4" fontFamily="customFont" textAlign="center">
                     Welcome to Family+
-                </h2>
-                <p>
+                </Heading>
+                <Text fontSize="lg" lineHeight="1.6" color="gray.700">
                     Family+ is an innovative web application that leverages the power of AI and 
                     blockchain technology to revolutionize the way individuals understand and 
                     utilize their medical documents. This platform brings together cutting-edge 
@@ -22,8 +23,8 @@ const Homepage: React.FC = () => {
                     aim to improve healthcare outcomes and potentially reduce costs. With 
                     Family+, you'll gain better control over your health information and make 
                     more informed healthcare decisions.
-                </p>
-            </main>
+                </Text>
+            </Container>
             <Footer />
         </div>
     );

@@ -21,11 +21,11 @@ export default function ConnectButton() {
       bgGradient="linear(to-r, purple.400, blue.500)"
       color="white"
       fontWeight="bold"
-      py={4}
-      px={8}
+      py={20}
+      px={40}
       rounded="lg"
-      fontSize="xl"
-      _hover={{ bg: 'purple.500' }}
+      fontSize="40px"
+      _hover={{ bg: 'purple.500', transition: 'color 0.3s', color: 'white' }}
     >
       Connect to your Metamask wallet
     </Button>
