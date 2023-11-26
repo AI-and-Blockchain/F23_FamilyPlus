@@ -1,5 +1,5 @@
-import { useEthers, useEtherBalance } from "@usedapp/core";
-
+import { useEthers, useEtherBalance } from '@usedapp/core';
+import { Box, Button } from '@chakra-ui/react';
 
 export default function ConnectButton() {
   const { activateBrowserWallet, account } = useEthers();
@@ -10,17 +10,24 @@ export default function ConnectButton() {
   }
 
   return account ? (
-    <div className="bg-gray-800 p-4 rounded-lg">
+    <Box bg="gray.800" p={4} rounded="lg">
       <p className="text-white text-md">
         {etherBalance && JSON.stringify(etherBalance)} ETH
       </p>
-    </div>
+    </Box>
   ) : (
-    <button
+    <Button
       onClick={handleConnectWallet}
-      className="bg-gradient-to-r from-purple-400 to-blue-500 text-white font-bold py-4 px-8 rounded-lg text-xl hover:bg-purple-500"
+      bgGradient="linear(to-r, purple.400, blue.500)"
+      color="white"
+      fontWeight="bold"
+      py={4}
+      px={8}
+      rounded="lg"
+      fontSize="xl"
+      _hover={{ bg: 'purple.500' }}
     >
       Connect to your Metamask wallet
-    </button>
+    </Button>
   );
 }

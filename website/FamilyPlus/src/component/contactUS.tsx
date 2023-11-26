@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Box, Heading, Input, Textarea, Button } from '@chakra-ui/react';
 
 const ContactUs: React.FC = () => {
   const [name, setName] = useState('');
@@ -23,7 +24,6 @@ const ContactUs: React.FC = () => {
     e.preventDefault();
     console.log('Submitting contact form:', name, email, message);
 
-
     // Replace the endpoint URL with the actual API endpoint for submitting the contact form
 
     console.log('Contact form submitted successfully');
@@ -33,56 +33,73 @@ const ContactUs: React.FC = () => {
 
     // Redirect or display a success message here
     navigate('/home');
-
-
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 flex items-center justify-center">
-      <div className="border rounded-lg shadow-lg p-8 bg-white w-full max-w-md">
-        <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">
+    <Box minH="100vh" bgGradient="linear(to-r, purple.400, pink.500, red.500)" display="flex" alignItems="center" justifyContent="center">
+      <Box border="1px" rounded="lg" shadow="lg" p={8} bg="white" w="full" maxW="md">
+        <Heading fontSize="3xl" fontWeight="bold" mb={6} color="gray.800">
           Contact Us
-        </h1>
+        </Heading>
         <form onSubmit={handleFormSubmit}>
-          <div className="mb-5">
+          <Box mb={5}>
             <label className="text-gray-700 font-bold text-xl">Name:</label>
-            <input
+            <Input
               type="text"
               value={name}
               onChange={handleNameChange}
-              className="border rounded-lg px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300"
+              border="1px"
+              rounded="lg"
+              px={3}
+              py={2}
+              w="full"
               required
             />
-          </div>
-          <div className="mb-5">
+          </Box>
+          <Box mb={5}>
             <label className="text-gray-700 font-bold text-xl">Email:</label>
-            <input
+            <Input
               type="email"
               value={email}
               onChange={handleEmailChange}
-              className="border rounded-lg px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300"
+              border="1px"
+              rounded="lg"
+              px={3}
+              py={2}
+              w="full"
               required
             />
-          </div>
-          <div className="mb-5">
+          </Box>
+          <Box mb={5}>
             <label className="text-gray-700 font-bold text-xl">Message:</label>
-            <textarea
+            <Textarea
               value={message}
               onChange={handleMessageChange}
-              className="border rounded-lg px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300"
+              border="1px"
+              rounded="lg"
+              px={3}
+              py={2}
+              w="full"
               rows={5}
               required
             />
-          </div>
-          <button
-            className="w-full bg-gradient-to-r from-blue-400 to-purple-600 hover:from-purple-500 hover:to-blue-500 text-white font-bold py-2 rounded-lg transition-colors duration-300"
+          </Box>
+          <Button
             type="submit"
+            bgGradient="linear(to-r, blue.400, purple.600)"
+            color="white"
+            fontWeight="bold"
+            py={2}
+            rounded="lg"
+            fontSize="xl"
+            _hover={{ bg: 'purple.500' }}
           >
             Submit
-          </button>
+          </Button>
         </form>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
+
 export default ContactUs;

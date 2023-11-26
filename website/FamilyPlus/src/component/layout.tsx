@@ -1,4 +1,5 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
+import { Box } from '@chakra-ui/react';
 
 type Props = {
   children?: ReactNode;
@@ -6,8 +7,8 @@ type Props = {
 
 export default function Layout({ children }: Props) {
   return (
-    <div className="min-h-screen bg-gradient-to-r from-orange-300 via-yellow-300 to-red-200 flex items-center justify-center flex-col">
+    <Box minH="100vh" bgGradient="linear(to-r, orange.300, yellow.300, red.200)" display="flex" alignItems="center" justifyContent="center" flexDir="column">
       {children}
-    </div>
+    </Box>
   );
 }

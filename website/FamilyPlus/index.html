@@ -11,13 +11,3 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-
-<!-- node // buffer-->
-<script>window.global = window;</script>
-<script type="module">
-    import { Buffer } from "buffer/"; // <-- no typo here ("/")
-    import process from "process";
-   
-    window.Buffer = Buffer;
-    window.process = process;
-</script>
