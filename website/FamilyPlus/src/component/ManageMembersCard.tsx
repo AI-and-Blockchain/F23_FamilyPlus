@@ -12,11 +12,16 @@ const ManageMembersCard: React.FC<ManageMembersCardProps> = ({ to }) => {
       <Box
         borderWidth="1px"
         borderRadius="lg"
+        bg="gray.100" // Set the default background color
         overflow="hidden"
         cursor="pointer"
         p="8"                  // Increase padding
         textAlign="center"    // Center text
         fontSize="50px"          // Increase font size
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        style={{ fontFamily: "Georgia, sans-serif" }} // Set the desired font family
         _hover={{
             bg: "orange.100", // Change background color on hover
           }}

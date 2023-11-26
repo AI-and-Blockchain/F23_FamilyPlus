@@ -20,7 +20,7 @@ export default function Headers() {
             px={4}
             py={2}
             rounded="lg"
-            _hover={{ bg: 'orange.200', transition: 'color 0.3s' }}
+            _hover={{ bg: 'orange.100', transition: 'color 0.3s' }}
           >
             Login
           </ChakraLink>
@@ -36,7 +36,7 @@ export default function Headers() {
             px={4}
             py={2}
             rounded="lg"
-            _hover={{ bg: 'orange.200', transition: 'color 0.3s' }}
+            _hover={{ bg: 'orange.100', transition: 'color 0.3s' }}
           >
             Contact Us
           </ChakraLink>
