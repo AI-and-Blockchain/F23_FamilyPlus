@@ -1,5 +1,6 @@
 import { useEthers, useEtherBalance } from "@usedapp/core";
 
+
 export default function ConnectButton() {
   const { activateBrowserWallet, account } = useEthers();
   const etherBalance = useEtherBalance(account);
