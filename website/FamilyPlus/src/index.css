@@ -1,0 +1,13 @@
+/* styles.css */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Assuming your main content container has a class named "main-container" */
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
