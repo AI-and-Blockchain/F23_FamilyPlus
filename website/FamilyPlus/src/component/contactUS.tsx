@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Heading, Input, Textarea, Button } from '@chakra-ui/react';
+import { Box, Heading, Input, Textarea } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/button';
 
 const ContactUs: React.FC = () => {
   const [name, setName] = useState('');
