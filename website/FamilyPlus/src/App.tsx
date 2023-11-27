@@ -5,6 +5,7 @@ import Homepage from './pages/homepage';
 import ContactUsPage from './pages/contactUsPage';
 import ConnectPage from './pages/connectPage';
 import PortalPage from './pages/portalPage';
+import ViewDocumentPage from './pages/ViewDocumentPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/contact-us" element={<ContactUsPage />} />
           <Route path="/connect" element={<ConnectPage />} />
           <Route path="//health-portal" element={<PortalPage />} />
+          <Route path="/view-documents" element={<ViewDocumentPage />} />
         </Routes>
       </Router>
     </ChakraProvider>
