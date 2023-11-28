@@ -1,6 +1,5 @@
-import { createCipheriv, createDecipheriv, Cipher, Decipher } from 'node:crypto';
+import { randomBytes, createCipheriv, createDecipheriv, Cipher, Decipher } from 'node:crypto';
 import { Buffer } from 'node:buffer';
-import randomBytes  from 'randombytes';
 import * as nacl from 'tweetnacl';
 
 export type AsymmetricEncryptedData = {
