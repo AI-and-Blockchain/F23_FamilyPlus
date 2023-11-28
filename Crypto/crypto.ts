@@ -1,40 +1,77 @@
-import { createCipheriv, createDecipheriv, randomBytes } from 'node:crypto';
-import { encrypt, decrypt } from 'eth-sig-util';
+import { randomBytes, createCipheriv, createDecipheriv, Cipher, Decipher } from 'node:crypto';
 import { Buffer } from 'node:buffer';
+import * as nacl from 'tweetnacl';
 
-function encrypt_document(publicKey, document_data) {
-    // document_data must be a Buffer, TypedArray, or DataView
-    const algorithm = 'aes-256-cbc';
-    const symmetric_key = randomBytes(32);
-    const encrypted_key = encrypt({
-        publicKey: publicKey,
-        data: symmetric_key,
-        version: 'x25519-xsalsa20-poly1305',
-      });
-    const iv = randomBytes(16);
-    const cipher = createCipheriv(algorithm, symmetric_key, iv);
+export type AsymmetricEncryptedData = {
+    nonce: Buffer;
+    ephemeralPublicKey: Buffer;
+    ciphertext: Buffer;
+};
 
-    let encrypted = cipher.update(document_data);
-	let buffer = cipher.final();
-	encrypted = Buffer.concat([encrypted, buffer], encrypted.length + buffer.length);
+export type EncryptedData = {
+    encrypted_key: AsymmetricEncryptedData;
+    encrypted_document: Buffer;
+};
 
+function asymmetric_encrypt(publicKey: Buffer, data: Buffer): AsymmetricEncryptedData {
+    const nonce: Buffer = randomBytes(nacl.box.nonceLength);
+    const ephemeralKeyPair = nacl.box.keyPair();
+    const encryptedMessage = nacl.box(data, nonce, publicKey, ephemeralKeyPair.secretKey)
     return {
-        encrypted_key: encrypted_key,
-        encrypted_document: encrypted,
-        iv: iv
+        nonce: nonce,
+        ephemeralPublicKey: Buffer.from(ephemeralKeyPair.publicKey),
+        ciphertext: Buffer.from(encryptedMessage)
+    }
+}
+
+function asymmetric_decrypt(privateKey: Buffer, encryptedData: AsymmetricEncryptedData): Buffer {
+    const decryption = nacl.box.open(encryptedData.ciphertext, encryptedData.nonce, encryptedData.ephemeralPublicKey, privateKey);
+    if (!decryption) {
+        throw new Error(`Decryption failed.`);
+    }
+    return Buffer.from(decryption);
+}
+
+function encode_asymmetric_encrypted_data(encryptedData: AsymmetricEncryptedData): Buffer {
+    return Buffer.concat([encryptedData.nonce, encryptedData.ephemeralPublicKey, encryptedData.ciphertext], encryptedData.nonce.length + encryptedData.ephemeralPublicKey.length + encryptedData.ciphertext.length);
+}
+
+function decode_asymmetric_encrypted_data(encodedData: Buffer): AsymmetricEncryptedData {
+    return {
+        nonce: encodedData.subarray(0, nacl.box.nonceLength),
+        ephemeralPublicKey: encodedData.subarray(nacl.box.nonceLength, nacl.box.nonceLength+nacl.box.publicKeyLength),
+        ciphertext: encodedData.subarray(nacl.box.nonceLength+nacl.box.publicKeyLength)
     };
 }
 
-function decrypt_document(privateKey, encrypted_key, encrypted_document, iv) {
+function encrypt_document(publicKey: Buffer, document_data: Buffer): EncryptedData {
+    const IV_LENGTH = 16;
+    const algorithm: string = 'aes-256-cbc';
+    const symmetric_key: Buffer = randomBytes(32);
+    const encrypted_key: AsymmetricEncryptedData = asymmetric_encrypt(publicKey, symmetric_key);
+    const iv: Buffer = randomBytes(IV_LENGTH);
+    let cipher: Cipher = createCipheriv(algorithm, symmetric_key, iv);
+
+    let encrypted: Buffer = cipher.update(document_data);
+	const buffer: Buffer = cipher.final();
+	encrypted = Buffer.concat([iv, encrypted, buffer], IV_LENGTH + encrypted.length + buffer.length);
+
+    return {
+        encrypted_key: encrypted_key,
+        encrypted_document: encrypted
+    };
+}
+
+function decrypt_document(privateKey: Buffer, encrypted_key: AsymmetricEncryptedData, encrypted_document: Buffer): Buffer {
     // Returns a decrypted Buffer of the original document_data
-    const algorithm = 'aes-256-cbc';
-    const symmetric_key = decrypt({
-        privateKey: privateKey,
-        encryptedData: encrypted_key
-      });
-    const decipher = createDecipheriv(algorithm, symmetric_key, iv);
-    let decrypted = decipher.update(encrypted_document);
-	let buffer = decipher.final();
+    const IV_LENGTH = 16;
+    const algorithm: string = 'aes-256-cbc';
+    const symmetric_key: Buffer = asymmetric_decrypt(privateKey, encrypted_key);
+    const iv: Buffer = encrypted_document.subarray(0, IV_LENGTH);
+    encrypted_document = encrypted_document.subarray(IV_LENGTH);
+    let decipher: Decipher = createDecipheriv(algorithm, symmetric_key, iv);
+    const decrypted: Buffer = decipher.update(encrypted_document);
+	const buffer: Buffer = decipher.final();
     return Buffer.concat([decrypted, buffer], decrypted.length + buffer.length);
 }
 
