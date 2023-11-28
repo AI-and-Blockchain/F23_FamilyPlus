@@ -34,3 +34,10 @@ npm run dev
 The application will be accessible at http://localhost:3000 (or another port if configured differently).
 You should browse our website on the browser where the Metamask extension is installed.
 
+
+# Blockchain
+## Smart Contract Deployment
+Simply use the Remix IDE on your browser to open `FamilyPlus.sol` and compile it and deploy on a MetaMask Injected Mask of your choice.
+
+Currently, our smart contract is deployed on the Sepolia test network at `0x539cc540df235b7d9b511cad4a214aeae445bf96`
+
