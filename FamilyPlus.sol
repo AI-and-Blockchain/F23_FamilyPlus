@@ -45,6 +45,21 @@ contract FamilyPlus{
         items[addr].push(newItem);
     }
 
+    function extendAccess(string memory id, address accountToGiveAccess) public returns(string memory){
+        address myAddr = address(msg.sender);
+        Item[] memory myUserItems = items[myAddr];
+
+        for (uint i = 0; i < myUserItems.length; i++){
+            if (keccak256(abi.encodePacked(myUserItems[i].Id)) == keccak256(abi.encodePacked(id))){
+                Item memory newItem = Item(id, myUserItems[i].CypherText);
+                items[accountToGiveAccess].push(newItem);
+                return "Success!";
+            }
+        }
+
+        return "Failure!";
+    }
+
     function list() view public returns(string[] memory){
         address addr = address(msg.sender);
         Item[] memory userItems = items[addr];
@@ -61,13 +76,8 @@ contract FamilyPlus{
     //given an address, see how much allowance it has
     mapping (address => uint) public allowanceAmount;
 
-    constructor(address guardian1, address guardian2, address guardian3, address guardian4, address guardian5){
+    constructor(){
         owner = payable(msg.sender);
-        setGuardian(guardian1);
-        setGuardian(guardian2);
-        setGuardian(guardian3);
-        setGuardian(guardian4);
-        setGuardian(guardian5);
     }
 
 
