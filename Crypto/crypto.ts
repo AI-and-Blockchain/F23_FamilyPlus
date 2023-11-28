@@ -1,5 +1,5 @@
-import { createCipheriv, createDecipheriv } from 'node:crypto';
-import { randomBytes, encrypt, decrypt } from 'eth-sig-util';
+import { createCipheriv, createDecipheriv, randomBytes } from 'node:crypto';
+import { encrypt, decrypt } from 'eth-sig-util';
 import { Buffer } from 'node:buffer';
 
 function encrypt_document(publicKey, document_data) {
@@ -37,3 +37,5 @@ function decrypt_document(privateKey, encrypted_key, encrypted_document, iv) {
 	let buffer = decipher.final();
     return Buffer.concat([decrypted, buffer], decrypted.length + buffer.length);
 }
+
+export { encrypt_document, decrypt_document };
