@@ -12,24 +12,27 @@ import { decrypt_document } from '../../../../Crypto/crypto';
 // Import contract ABI from the JSON file
 import contractABI from '../assets/contract-ABI.json';
 
-// Extend Window interface with ethereum property
 interface ExtendedWindow extends Window {
-    ethereum?: EthereumProvider;
+    ethereum?: {
+      enable?: () => Promise<string[]>;
+    };
   }
 
+
+
 const ViewDocPage = () => {
-  const [fileIds, setFileIds] = useState([]);
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [decryptedText, setDecryptedText] = useState('');
+    const [fileIds, setFileIds] = useState([]);
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [decryptedText, setDecryptedText] = useState('');
 
-  // Connect to Ethereum provider (MetaMask or Infura)
-  const web3 = new Web3((window as ExtendedWindow).ethereum);
+    // Connect to Ethereum provider
+    const web3 = new Web3((window as ExtendedWindow).ethereum);
 
-  // Request account access if needed
+    // Request account access if needed
     useEffect(() => {
         const requestAccount = async () => {
             try {
-                await (window as ExtendedWindow).ethereum.enable();
+                await (window as ExtendedWindow).ethereum?.enable?.();
             } catch (error) {
                 console.error('MetaMask account access denied:', error);
             }

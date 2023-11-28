@@ -5,7 +5,7 @@ import Homepage from './pages/homepage';
 import ContactUsPage from './pages/contactUsPage';
 import ConnectPage from './pages/connectPage';
 import PortalPage from './pages/portalPage';
-import ViewDocumentPage from './pages/ViewDocumentPage';
+import ViewDocumentPage from './pages/viewDocPage';
 
 function App() {
   return (
