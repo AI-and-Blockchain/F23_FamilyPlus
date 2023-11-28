@@ -62,15 +62,15 @@ function encrypt_document(publicKey: Buffer, document_data: Buffer): EncryptedDa
     };
 }
 
-function decrypt_document(privateKey: Buffer, encrypted_key: AsymmetricEncryptedData, encrypted_document: Buffer): Buffer {
+function decrypt_document(privateKey: Buffer, encryptedData: EncryptedData): Buffer {
     // Returns a decrypted Buffer of the original document_data
     const IV_LENGTH = 16;
     const algorithm: string = 'aes-256-cbc';
-    const symmetric_key: Buffer = asymmetric_decrypt(privateKey, encrypted_key);
-    const iv: Buffer = encrypted_document.subarray(0, IV_LENGTH);
-    encrypted_document = encrypted_document.subarray(IV_LENGTH);
+    const symmetric_key: Buffer = asymmetric_decrypt(privateKey, encryptedData.encrypted_key);
+    const iv: Buffer = encryptedData.encrypted_document.subarray(0, IV_LENGTH);
+    encryptedData.encrypted_document = encryptedData.encrypted_document.subarray(IV_LENGTH);
     let decipher: Decipher = createDecipheriv(algorithm, symmetric_key, iv);
-    const decrypted: Buffer = decipher.update(encrypted_document);
+    const decrypted: Buffer = decipher.update(encryptedData.encrypted_document);
 	const buffer: Buffer = decipher.final();
     return Buffer.concat([decrypted, buffer], decrypted.length + buffer.length);
 }
