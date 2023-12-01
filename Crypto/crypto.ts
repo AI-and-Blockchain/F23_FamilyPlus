@@ -36,7 +36,7 @@ function randomBytes(amount: number): Buffer {
 function asymmetric_encrypt(publicKey: Buffer, data: Buffer): AsymmetricEncryptedData {
     const nonce: Buffer = randomBytes(nacl.box.nonceLength);
     const ephemeralKeyPair = nacl.box.keyPair();
-    const encryptedMessage = nacl.box(data, nonce, publicKey, ephemeralKeyPair.secretKey)
+    const encryptedMessage = nacl.box(new Uint8Array(data), new Uint8Array(nonce), new Uint8Array(publicKey), ephemeralKeyPair.secretKey)
     return {
         nonce: nonce,
         ephemeralPublicKey: Buffer.from(ephemeralKeyPair.publicKey),

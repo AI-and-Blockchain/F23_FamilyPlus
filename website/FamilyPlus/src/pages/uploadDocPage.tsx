@@ -7,9 +7,11 @@ import EthereumProvider from 'web3-eth';
 import { Buffer } from 'buffer/';
 import Headers from '../component/header';
 import Footer from '../component/footer';
+import * as nacl from 'tweetnacl';
+import * as naclUtil from 'tweetnacl-util';
 
 // Import the encrypt_document function from crypto.ts
-import { encrypt_document, encode_asymmetric_encrypted_data } from '../../../../Crypto/crypto';
+import { encrypt_document, encode_asymmetric_encrypted_data, EncryptedData } from '../../../../Crypto/crypto';
 import { uploadFile, downloadFile } from '../../../../Crypto/ipfs';
 // Import contract ABI from the JSON file
 import contractABI from '../assets/contract-ABI.json';
@@ -42,15 +44,15 @@ const handleUpload = async () => {
         const userAddress = accounts[0];
   
         // Get public key from MetaMask
-        const publicKey = await (window as ExtendedWindow).ethereum.request({
+        const publicKey: Buffer = Buffer.from(naclUtil.decodeBase64( await (window as ExtendedWindow).ethereum.request({
           method: 'eth_getEncryptionPublicKey',
           params: [userAddress],
-        });
+        })));
   
         // Encrypt the document content
         const documentData = Buffer.from(fileContent);
-        const encryptedData = encrypt_document(publicKey, documentData);
-        const IPFS_hash = uploadFile((await encryptedData).encrypted_document)
+        const encryptedData: EncryptedData = await encrypt_document(publicKey, documentData);
+        const IPFS_hash = await uploadFile(encryptedData.encrypted_document)
 
         const encoded_input = encode_asymmetric_encrypted_data((await encryptedData).encrypted_key, IPFS_hash)
   
