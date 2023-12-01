@@ -13,7 +13,7 @@ import * as naclUtil from 'tweetnacl-util';
 
 // Import the encrypt_document function from crypto.ts
 import { encrypt_document, encode_asymmetric_encrypted_data, EncryptedData } from '../../../../Crypto/crypto';
-import { uploadFile, downloadFile } from '../../../../Crypto/ipfs';
+import { uploadFile, downloadFile, bufferToCID } from '../../../../Crypto/ipfs';
 // Import contract ABI from the JSON file
 import contractABI from '../assets/contract-ABI.json';
 interface ExtendedWindow extends Window {
@@ -59,7 +59,7 @@ const handleUpload = async () => {
         const encoded_input = encode_asymmetric_encrypted_data(encryptedData.encrypted_key, IPFS_hash)
   
         // Call the write function in your Ethereum contract
-        await myContract.methods.write('UniqueFileId', encoded_input).send({
+        await myContract.methods.write(bufferToCID(IPFS_hash).toString(), encoded_input).send({
           from: userAddress,
         });
         alert('Successfully upload the document and redirect to health-portal page');

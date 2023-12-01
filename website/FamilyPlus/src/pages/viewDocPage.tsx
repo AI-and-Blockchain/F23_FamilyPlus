@@ -5,12 +5,13 @@ import Web3 from 'web3';
 import EthereumProvider from 'web3-eth';
 import Headers from '../component/header';
 import Footer from '../component/footer';
-
+import { Buffer } from 'buffer/';
 // Import the decrypt_document functions from crypto.ts
-import { decrypt_document } from '../../../../Crypto/crypto'; 
+import { EncryptedKeyAndCID, decode_asymmetric_encrypted_data, decrypt_document } from '../../../../Crypto/crypto'; 
 
 // Import contract ABI from the JSON file
 import contractABI from '../assets/contract-ABI.json';
+import { downloadFile } from '../../../../Crypto/ipfs';
 
 interface ExtendedWindow extends Window {
     ethereum?: {
@@ -77,19 +78,36 @@ const ViewDocPage = () => {
 
     // call the read function in the smart contract
     const handleFileClick = async (fileId: string) => {
-        try {
-        // Use Web3.js or ethers.js to call the read function in your Ethereum contract
-        const cypherTextHex = await myContract.methods.read(fileId).call();
-        
-        // Convert hex string to Buffer
-        const cypherTextBuffer = Buffer.from(cypherTextHex.slice(2), 'hex');
+        const accounts = await (window as ExtendedWindow).ethereum.request({
+            method: 'eth_requestAccounts',
+        });
     
-        // Decrypt the data
-        const decryptedData = decrypt_document(yourPrivateKey, cypherTextBuffer);
-        setDecryptedText(decryptedData.toString());
-        setSelectedFile(fileId);
-        } catch (error) {
-        console.error('Error decrypting data:', error);
+        if (accounts.length > 0) {
+            const userAddress = accounts[0];
+            try {
+            // Use Web3.js or ethers.js to call the read function in your Ethereum contract
+            const cipherTextHex = await myContract.methods.read(fileId).call({
+                from: userAddress,
+              });
+            
+            // Convert hex string to Buffer
+            const cipherTextBuffer = Buffer.from(cipherTextHex.slice(2), 'hex');
+
+            const keyAndCid: EncryptedKeyAndCID = decode_asymmetric_encrypted_data(cipherTextBuffer);
+
+            const encryptedFile = await downloadFile(keyAndCid.cid);
+        
+            // Decrypt the data
+            const decryptedData = await decrypt_document(userAddress,
+                {
+                    encrypted_key: keyAndCid.encrypted_key,
+                    encrypted_document: encryptedFile
+            });
+            setDecryptedText(decryptedData.toString());
+            setSelectedFile(fileId);
+            } catch (error) {
+            console.error('Error decrypting data:', error);
+            }
         }
     };
   
@@ -103,7 +121,7 @@ const ViewDocPage = () => {
         <Headers />
         <Box p={4}>
             <Text fontSize="xl" mb={4}>
-                List of File IDs:
+                All the files you have uploaded:
             </Text>
             <ul>
                 {fileIds.map((fileId) => (
