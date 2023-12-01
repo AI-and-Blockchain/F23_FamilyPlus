@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Heading, Button, Text } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import Web3 from 'web3';
+import { useNavigate } from 'react-router-dom';
 import EthereumProvider from 'web3-eth';
 import { Buffer } from 'buffer/';
 import Headers from '../component/header';
@@ -22,6 +23,7 @@ interface ExtendedWindow extends Window {
 const UploadDocPage: React.FC = () => {
   const [fileContent, setFileContent] = useState('');
   const [encryptedDocument, setEncryptedDocument] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   // Connect to Ethereum provider (MetaMask or Infura)
   const web3 = new Web3((window as ExtendedWindow).ethereum);
@@ -60,7 +62,8 @@ const handleUpload = async () => {
         await myContract.methods.write('UniqueFileId', encoded_input).send({
           from: userAddress,
         });
-  
+        alert('Successfully upload the document and redirect to health-portal page');
+        navigate('/health-portal');
         // Optionally, you can update state or show a success message
         //setEncryptedDocument(encryptedData);
       } else {
