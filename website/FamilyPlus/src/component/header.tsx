@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Flex, Box, Image, Link as ChakraLink } from '@chakra-ui/react';
-import Logo from '../image/logo.png';
+import Logo from '../image/logo-2.png';
 
 export default function Headers() {
   return (
-    <Flex bg="gray.200" p={2} align="center" justify="space-between">
+    <Flex bg="white.200" p={2} align="center" justify="space-between">
       <Box>
         <Link to="/">
           <Image src={Logo} alt="Logo" w="100" h="100" />

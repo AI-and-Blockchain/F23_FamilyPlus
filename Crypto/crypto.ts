@@ -1,6 +1,8 @@
-import { Buffer } from 'node:buffer';
+// var Buffer = require('buffer/').Buffer; // Required for browser compatibility
+import * as Buffer from 'buffer';
 import * as nacl from 'tweetnacl';
 import * as naclUtil from 'tweetnacl-util';
+
 
 const SYMMETRIC_ALGORITHM_NAME: string = 'AES-CBC';
 const SYMMETRIC_KEY_LENGTH: number = 256;
@@ -93,3 +95,5 @@ async function decrypt_document(address: string, encryptedData: EncryptedData): 
     const decrypted: Buffer = await window.crypto.subtle.decrypt({name: SYMMETRIC_ALGORITHM_NAME, iv:iv}, symmetric_key, encrypted_document).then(Buffer.from);
     return decrypted
 }
+
+export { encrypt_document, decrypt_document };

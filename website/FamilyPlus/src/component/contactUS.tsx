@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Heading, Input, Textarea, Button } from '@chakra-ui/react';
+import { Box, Heading, Input, Textarea } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/button';
 
 const ContactUs: React.FC = () => {
   const [name, setName] = useState('');
@@ -38,7 +39,7 @@ const ContactUs: React.FC = () => {
   };
 
   return (
-    <Box minH="100vh" bgGradient="linear(to-r, purple.400, pink.500, red.500)" display="flex" alignItems="center" justifyContent="center">
+    <Box minH="80vh" bgGradient="linear(to-r, purple.400, pink.500, red.500)" display="flex" alignItems="center" justifyContent="center">
       <Box border="1px" rounded="lg" shadow="lg" p={8} bg="white" w="full" maxW="md">
         <Heading fontSize="3xl" fontWeight="bold" mb={6} color="gray.800">
           Contact Us

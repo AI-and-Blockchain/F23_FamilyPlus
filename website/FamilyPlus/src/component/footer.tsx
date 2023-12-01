@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react';
 const Footer: React.FC = () => {
   return (
     <Box
-      bg="gray.200"  // Change background color to gray
+      bg="gray.100"  // Change background color to gray
       color="black"
       textAlign="center"
       position="fixed"  // Fix the position
