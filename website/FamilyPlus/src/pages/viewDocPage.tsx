@@ -49,15 +49,15 @@ const ViewDocPage = () => {
     // Function to fetch file IDs from the contract
     const fetchFileIds = async () => {
         try {
-        // Use the list function from your contract (assuming it returns an array of file IDs)
-        const fetchedFileIds = await myContract.methods.list().call();
-    
-        // Ensure that fetchedFileIds is an array before setting the state
-        if (Array.isArray(fetchedFileIds)) {
-            setFileIds(fetchedFileIds);
-        } else {
-            console.error('Invalid data format returned from list function.');
-        }
+            // Use the list function from your contract (assuming it returns an array of file IDs)
+            const fetchedFileIds = await myContract.methods.list().call();
+            console.log(fetchedFileIds);
+            // Ensure that fetchedFileIds is an array before setting the state
+            if (Array.isArray(fetchedFileIds)) {
+                setFileIds(fetchedFileIds);
+            } else {
+                console.error('Invalid data format returned from list function.');
+            }
         } catch (error) {
         console.error('Error fetching file IDs:', error);
         }

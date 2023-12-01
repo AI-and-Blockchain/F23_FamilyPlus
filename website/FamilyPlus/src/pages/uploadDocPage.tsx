@@ -54,7 +54,7 @@ const handleUpload = async () => {
         const encryptedData: EncryptedData = await encrypt_document(publicKey, documentData);
         const IPFS_hash = await uploadFile(encryptedData.encrypted_document)
 
-        const encoded_input = encode_asymmetric_encrypted_data((await encryptedData).encrypted_key, IPFS_hash)
+        const encoded_input = encode_asymmetric_encrypted_data(encryptedData.encrypted_key, IPFS_hash)
   
         // Call the write function in your Ethereum contract
         await myContract.methods.write('UniqueFileId', encoded_input).send({
@@ -62,7 +62,7 @@ const handleUpload = async () => {
         });
   
         // Optionally, you can update state or show a success message
-        setEncryptedDocument(encryptedData);
+        //setEncryptedDocument(encryptedData);
       } else {
         console.error('No accounts available.');
         // Handle error state or show an error message
