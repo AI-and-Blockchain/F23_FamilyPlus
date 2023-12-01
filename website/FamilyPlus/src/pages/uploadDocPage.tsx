@@ -6,8 +6,8 @@ import Web3 from 'web3';
 import EthereumProvider from 'web3-eth';
 
 // Import the encrypt_document function from crypto.ts
-import { encrypt_document } from '../../../../Crypto/crypto';
-
+import { encrypt_document, encode_asymmetric_encrypted_data } from '../../../../Crypto/crypto';
+import { uploadFile, downloadFile } from '../../../../Crypto/ipfs';
 // Import contract ABI from the JSON file
 import contractABI from '../assets/contract-ABI.json';
 
@@ -48,9 +48,12 @@ const handleUpload = async () => {
         // Encrypt the document content
         const documentData = Buffer.from(fileContent);
         const encryptedData = encrypt_document(publicKey, documentData);
+        const IPFS_hash = uploadFile((await encryptedData).encrypted_document)
+
+        const encoded_input = encode_asymmetric_encrypted_data((await encryptedData).encrypted_key, IPFS_hash)
   
         // Call the write function in your Ethereum contract
-        await myContract.methods.write('UniqueFileId', encryptedData).send({
+        await myContract.methods.write('UniqueFileId', encoded_input).send({
           from: userAddress,
         });
   

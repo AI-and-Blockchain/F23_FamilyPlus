@@ -26,3 +26,5 @@ async function downloadFile(ipfsHash: Buffer) : Promise<Buffer> {
 
     return Buffer.concat(chunks, size);
 }
+
+export{uploadFile, downloadFile}
