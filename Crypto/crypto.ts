@@ -1,6 +1,8 @@
-import { Buffer } from 'node:buffer';
+// var Buffer = require('buffer/').Buffer; // Required for browser compatibility
+import * as Buffer from 'buffer';
 import * as nacl from 'tweetnacl';
 import * as naclUtil from 'tweetnacl-util';
+
 
 const SYMMETRIC_ALGORITHM_NAME: string = 'AES-CBC';
 const SYMMETRIC_KEY_LENGTH: number = 256;
@@ -18,6 +20,11 @@ export type EncryptedData = {
     encrypted_key: AsymmetricEncryptedData;
     encrypted_document: Buffer;
 };
+
+export type EncryptedKeyAndCID = {
+    encrypted_key: AsymmetricEncryptedData;
+    cid: Buffer;
+}
 
 function randomBytes(amount: number): Buffer {
     let data = Buffer.alloc(amount);
@@ -57,15 +64,26 @@ function metamaskify_encrypted_data(encryptedData: AsymmetricEncryptedData): str
     return '0x' + Buffer.from(JSON.stringify(data)).toString('hex');
 }
 
-function encode_asymmetric_encrypted_data(encryptedData: AsymmetricEncryptedData): Buffer {
-    return Buffer.concat([encryptedData.nonce, encryptedData.ephemeralPublicKey, encryptedData.ciphertext], encryptedData.nonce.length + encryptedData.ephemeralPublicKey.length + encryptedData.ciphertext.length);
+function encode_asymmetric_encrypted_data(encryptedData: AsymmetricEncryptedData, IPFS_hash: Buffer): Buffer {
+    const IPFS_hash_length: number = 36;
+    if ( IPFS_hash_length !== IPFS_hash.length) {
+        throw new Error(`Expected IPFS_hash to be ${IPFS_hash_length} bytes long, but was ${IPFS_hash.length} bytes long`);
+    }
+
+    return Buffer.concat([IPFS_hash, encryptedData.nonce, encryptedData.ephemeralPublicKey, encryptedData.ciphertext], IPFS_hash.length + encryptedData.nonce.length + encryptedData.ephemeralPublicKey.length + encryptedData.ciphertext.length);
 }
 
-function decode_asymmetric_encrypted_data(encodedData: Buffer): AsymmetricEncryptedData {
+function decode_asymmetric_encrypted_data(encodedData: Buffer): EncryptedKeyAndCID {
+    const IPFS_hash_length: number = 36;
+    const CID: Buffer = encodedData.subarray(0, IPFS_hash_length);
+    const encrypted_key: AsymmetricEncryptedData = {
+        nonce: encodedData.subarray(IPFS_hash_length, IPFS_hash_length + nacl.box.nonceLength),
+        ephemeralPublicKey: encodedData.subarray(IPFS_hash_length + nacl.box.nonceLength, IPFS_hash_length + nacl.box.nonceLength+nacl.box.publicKeyLength),
+        ciphertext: encodedData.subarray(IPFS_hash_length + nacl.box.nonceLength+nacl.box.publicKeyLength)
+    }
     return {
-        nonce: encodedData.subarray(0, nacl.box.nonceLength),
-        ephemeralPublicKey: encodedData.subarray(nacl.box.nonceLength, nacl.box.nonceLength+nacl.box.publicKeyLength),
-        ciphertext: encodedData.subarray(nacl.box.nonceLength+nacl.box.publicKeyLength)
+        encrypted_key: encrypted_key,
+        cid: CID
     };
 }
 
@@ -93,3 +111,5 @@ async function decrypt_document(address: string, encryptedData: EncryptedData): 
     const decrypted: Buffer = await window.crypto.subtle.decrypt({name: SYMMETRIC_ALGORITHM_NAME, iv:iv}, symmetric_key, encrypted_document).then(Buffer.from);
     return decrypted
 }
+
+export { encrypt_document, decrypt_document };
