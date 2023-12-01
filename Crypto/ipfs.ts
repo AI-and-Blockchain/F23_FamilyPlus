@@ -18,11 +18,13 @@ async function uploadFile(filePath: string) : Promise<Buffer> {
 async function downloadFile(ipfsHash: Buffer) : Promise<Buffer> {
     const cid = new CID(ipfsHash);
 
+    var size : number = 0;
     var chunks : Array<Uint8Array> = [];
 
     for await (const chunk of helia_fs.cat(cid)) {
         chunks.push(chunk);
+        size += chunk.length;
     }
 
-    return Buffer.concat(chunks);
+    return Buffer.concat(chunks, size);
 }
