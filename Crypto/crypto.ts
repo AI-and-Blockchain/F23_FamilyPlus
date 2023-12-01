@@ -112,4 +112,4 @@ async function decrypt_document(address: string, encryptedData: EncryptedData): 
     return decrypted
 }
 
-export { encrypt_document, decrypt_document };
+export { encrypt_document, decrypt_document, encode_asymmetric_encrypted_data, decode_asymmetric_encrypted_data};
