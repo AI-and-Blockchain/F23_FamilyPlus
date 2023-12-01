@@ -17,8 +17,8 @@ export type AsymmetricEncryptedData = {
 };
 
 export type EncryptedData = {
-    encrypted_key: AsymmetricEncryptedData;
-    encrypted_document: Buffer;
+    encrypted_key: AsymmetricEncryptedData; // This will be encoded and sent to the blockchain
+    encrypted_document: Buffer; // This will be sent to IPFS
 };
 
 export type EncryptedKeyAndCID = {
