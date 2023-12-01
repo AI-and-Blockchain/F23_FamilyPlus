@@ -1,5 +1,6 @@
 // var Buffer = require('buffer/').Buffer; // Required for browser compatibility
-import * as Buffer from 'buffer';
+// import * as Buffer from 'buffer/';
+import { Buffer } from 'buffer/';
 import * as nacl from 'tweetnacl';
 import * as naclUtil from 'tweetnacl-util';
 

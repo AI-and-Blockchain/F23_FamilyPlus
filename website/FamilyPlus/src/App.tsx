@@ -6,6 +6,7 @@ import ContactUsPage from './pages/contactUsPage';
 import ConnectPage from './pages/connectPage';
 import PortalPage from './pages/portalPage';
 import ViewDocumentPage from './pages/viewDocPage';
+import UploadDocPage from './pages/uploadDocPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/connect" element={<ConnectPage />} />
           <Route path="//health-portal" element={<PortalPage />} />
           <Route path="/view-documents" element={<ViewDocumentPage />} />
+          <Route path="/upload-documents" element={<UploadDocPage />} />
         </Routes>
       </Router>
     </ChakraProvider>

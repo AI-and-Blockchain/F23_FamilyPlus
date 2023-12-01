@@ -1,6 +1,7 @@
 import { createHelia } from 'helia';
 import { unixfs } from '@helia/unixfs';
 import { CID } from 'multiformats/cid';
+import * as Buffer from 'buffer';
 
 // Connect to IPFS
 const helia = await createHelia();

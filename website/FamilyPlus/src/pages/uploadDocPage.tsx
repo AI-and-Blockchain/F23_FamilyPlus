@@ -4,13 +4,15 @@ import { Box, Heading, Button, Text } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import Web3 from 'web3';
 import EthereumProvider from 'web3-eth';
+import { Buffer } from 'buffer/';
+import Headers from '../component/header';
+import Footer from '../component/footer';
 
 // Import the encrypt_document function from crypto.ts
 import { encrypt_document, encode_asymmetric_encrypted_data } from '../../../../Crypto/crypto';
 import { uploadFile, downloadFile } from '../../../../Crypto/ipfs';
 // Import contract ABI from the JSON file
 import contractABI from '../assets/contract-ABI.json';
-
 interface ExtendedWindow extends Window {
   ethereum?: EthereumProvider;
 }
@@ -72,6 +74,7 @@ const handleUpload = async () => {
 
   return (
     <Box>
+      <Headers />
       <Heading mb={4}>Upload Document</Heading>
       <textarea
         placeholder="Enter your document content here"
@@ -90,6 +93,7 @@ const handleUpload = async () => {
           <Text>{encryptedDocument}</Text>
         </Box>
       )}
+        <Footer />
     </Box>
   );
 };
