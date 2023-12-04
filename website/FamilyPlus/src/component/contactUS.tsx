@@ -33,7 +33,6 @@ const ContactUs: React.FC = () => {
     setMessage('');
 
     // Redirect or display a success message here
-    // display a success message here
     alert('Contact form submitted successfully and redirecting to home page');
     navigate('/');
   };

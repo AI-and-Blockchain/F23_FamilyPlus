@@ -33,7 +33,6 @@ const Sublist: React.FC<SublistProps> = ({ records, privateKey }) => {
       {records.map((record) => (
         <ListItem key={record}>
           <Text>{record}</Text>
-          {/* Add "Decrypted and Download" button for each record */}
           <Button
             size="sm"
             colorScheme="blue"

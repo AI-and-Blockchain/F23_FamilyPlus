@@ -16,7 +16,7 @@ export default function Headers() {
             as={Link}
             to="/connect"
             fontWeight="bold"
-            fontSize="30px" // You can adjust the size as needed
+            fontSize="30px" 
             px={4}
             py={2}
             rounded="lg"
@@ -32,7 +32,7 @@ export default function Headers() {
             as={Link}
             to="/contact-us"
             fontWeight="bold"
-            fontSize="30px" // You can adjust the size as needed
+            fontSize="30px" 
             px={4}
             py={2}
             rounded="lg"

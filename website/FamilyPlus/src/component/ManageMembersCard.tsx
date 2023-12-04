@@ -28,7 +28,6 @@ const ManageMembersCard: React.FC<ManageMembersCardProps> = ({ to }) => {
       >
         <Box p="6">
           <Text fontWeight="bold">Manage Members</Text>
-          {/* Add any other content for the card */}
         </Box>
       </Box>
     </Link>

@@ -3,9 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { Box, Text, Link } from '@chakra-ui/react';
 import Web3 from 'web3';
 import EthereumProvider from 'web3-eth';
+import { Buffer } from 'buffer/';
+
+// Import the header and footer component
 import Headers from '../component/header';
 import Footer from '../component/footer';
-import { Buffer } from 'buffer/';
+
 // Import the decrypt_document functions from crypto.ts
 import { EncryptedKeyAndCID, decode_asymmetric_encrypted_data, decrypt_document } from '../../../../Crypto/crypto'; 
 
@@ -13,6 +16,7 @@ import { EncryptedKeyAndCID, decode_asymmetric_encrypted_data, decrypt_document 
 import contractABI from '../assets/contract-ABI.json';
 import { downloadFile } from '../../../../Crypto/ipfs';
 
+// Extend the Window interface with ethereum
 interface ExtendedWindow extends Window {
     ethereum?: {
       enable?: () => Promise<string[]>;
@@ -20,7 +24,7 @@ interface ExtendedWindow extends Window {
   }
 
 
-
+// Create a component
 const ViewDocPage = () => {
     const [fileIds, setFileIds] = useState([]);
     const [selectedFile, setSelectedFile] = useState(null);
@@ -53,7 +57,8 @@ const ViewDocPage = () => {
         const accounts = await (window as ExtendedWindow).ethereum.request({
             method: 'eth_requestAccounts',
         });
-    
+
+        // Check if MetaMask is connected
         if (accounts.length > 0) {
             const userAddress = accounts[0];
             try {
@@ -81,7 +86,8 @@ const ViewDocPage = () => {
         const accounts = await (window as ExtendedWindow).ethereum.request({
             method: 'eth_requestAccounts',
         });
-    
+
+        // Check if MetaMask is connected
         if (accounts.length > 0) {
             const userAddress = accounts[0];
             try {
@@ -92,9 +98,7 @@ const ViewDocPage = () => {
             
             // Convert hex string to Buffer
             const cipherTextBuffer = Buffer.from(cipherTextHex.slice(2), 'hex');
-
             const keyAndCid: EncryptedKeyAndCID = decode_asymmetric_encrypted_data(cipherTextBuffer);
-
             const encryptedFile = await downloadFile(keyAndCid.cid);
         
             // Decrypt the data
@@ -103,6 +107,7 @@ const ViewDocPage = () => {
                     encrypted_key: keyAndCid.encrypted_key,
                     encrypted_document: encryptedFile
             });
+            // Update state or show a success message
             setDecryptedText(decryptedData.toString());
             setSelectedFile(fileId);
             } catch (error) {
@@ -110,8 +115,6 @@ const ViewDocPage = () => {
             }
         }
     };
-  
-
     useEffect(() => {
         fetchFileIds();
     }, []);

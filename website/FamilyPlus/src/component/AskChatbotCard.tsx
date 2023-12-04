@@ -1,11 +1,12 @@
-// components/AskChatbotCard.tsx
 import { Box, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
+// Build an interface for the component props
 interface AskChatbotCardProps {
   to: string;
 }
 
+// Build a card component
 const AskChatbotCard: React.FC<AskChatbotCardProps> = ({ to }) => {
   return (
     <Link to={to}>
@@ -28,7 +29,6 @@ const AskChatbotCard: React.FC<AskChatbotCardProps> = ({ to }) => {
       >
         <Box p="6">
           <Text fontWeight="bold">Ask Chatbot</Text>
-          {/* Add any other content for the card */}
         </Box>
       </Box>
     </Link>

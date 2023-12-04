@@ -1,4 +1,3 @@
-// pages/PersonalHealthPortalPage.tsx
 import { Box, Grid } from "@chakra-ui/react";
 import ViewDocumentsCard from "../component/ViewDocumentsCard";
 import UploadDocumentsCard from "../component/UploadDocumentsCard";

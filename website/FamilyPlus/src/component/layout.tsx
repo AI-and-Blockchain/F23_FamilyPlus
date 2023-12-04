@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { Box } from '@chakra-ui/react';
 
+// Build a layout component
 type Props = {
   children?: ReactNode;
 };

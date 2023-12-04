@@ -6,20 +6,26 @@ import Web3 from 'web3';
 import { useNavigate } from 'react-router-dom';
 import EthereumProvider from 'web3-eth';
 import { Buffer } from 'buffer/';
-import Headers from '../component/header';
-import Footer from '../component/footer';
 import * as nacl from 'tweetnacl';
 import * as naclUtil from 'tweetnacl-util';
+
+// Import the header and footer component
+import Headers from '../component/header';
+import Footer from '../component/footer';
 
 // Import the encrypt_document function from crypto.ts
 import { encrypt_document, encode_asymmetric_encrypted_data, EncryptedData } from '../../../../Crypto/crypto';
 import { uploadFile, downloadFile, bufferToCID } from '../../../../Crypto/ipfs';
+
 // Import contract ABI from the JSON file
 import contractABI from '../assets/contract-ABI.json';
+
+// Extend the Window interface with ethereum
 interface ExtendedWindow extends Window {
   ethereum?: EthereumProvider;
 }
 
+// Create a component
 const UploadDocPage: React.FC = () => {
   const [fileContent, setFileContent] = useState('');
   const [encryptedDocument, setEncryptedDocument] = useState<string | null>(null);
@@ -41,7 +47,8 @@ const handleUpload = async () => {
       const accounts = await (window as ExtendedWindow).ethereum.request({
         method: 'eth_requestAccounts',
       });
-  
+
+      // Check if MetaMask is connected
       if (accounts.length > 0) {
         const userAddress = accounts[0];
   
@@ -64,15 +71,13 @@ const handleUpload = async () => {
         });
         alert('Successfully upload the document and redirect to health-portal page');
         navigate('/health-portal');
-        // Optionally, you can update state or show a success message
+        // Update state or show a success message
         //setEncryptedDocument(encryptedData);
       } else {
         console.error('No accounts available.');
-        // Handle error state or show an error message
       }
     } catch (error) {
       console.error('Error uploading document:', error);
-      // Handle error state or show an error message
     }
   };
   
