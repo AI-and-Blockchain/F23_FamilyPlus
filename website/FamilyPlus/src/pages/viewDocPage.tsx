@@ -61,8 +61,9 @@ const ViewDocPage = () => {
         // Check if MetaMask is connected
         if (accounts.length > 0) {
             const userAddress = accounts[0];
+            // Use Web3.js to call the list function in OUR Ethereum contract
             try {
-                // Use the list function from your contract (assuming it returns an array of file IDs)
+                // Use the list function from our contract (assuming it returns an array of file IDs)
                 const fetchedFileIds = await myContract.methods.list().call({
                     from: userAddress,
                   });
@@ -90,6 +91,7 @@ const ViewDocPage = () => {
         // Check if MetaMask is connected
         if (accounts.length > 0) {
             const userAddress = accounts[0];
+            // Use Web3.js to call the read function in our Ethereum contract
             try {
             // Use Web3.js or ethers.js to call the read function in your Ethereum contract
             const cipherTextHex = await myContract.methods.read(fileId).call({

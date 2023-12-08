@@ -42,6 +42,7 @@ const UploadDocPage: React.FC = () => {
 
  // Function to handle document upload
 const handleUpload = async () => {
+    // Check if we successfully uploaded the document
     try {
       // Request account access from MetaMask
       const accounts = await (window as ExtendedWindow).ethereum.request({
