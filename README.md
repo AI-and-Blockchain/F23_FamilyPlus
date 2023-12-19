@@ -8,10 +8,13 @@
   - [AI Models](#ai-models)
   - [Blockchain Architecture](#blockchain-architecture)
   - [Diagrams](#diagrams)
-  - [Disclaimer](#disclaimer)
+  - [Why Family+](#why-family)
+  - [Install](#install)
   - [License](#license)
+  - [Disclaimer](#disclaimer)
   - [Reference](#reference)
 
+---
 
 ### Key Features
 
@@ -179,6 +182,81 @@ Family+ is a game-changer in the healthcare industry for several reasons:
 
 - **Reduced Healthcare Costs**: With better-informed decisions, we anticipate a potential reduction in healthcare costs.
 
+---
+
+### Install
+
+#### Prerequiests
+
+Before you begin, ensure you have met the following requirements:
+
+- You have a **Windows/Mac/Linux** machine.
+- You have installed [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/).
+
+#### Basic Install
+1. Open the terminal.
+2. Change the current working directory to the location where you want the cloned directory.
+3. Clone the repository:
+  ```bash
+  git clone https://github.com/AI-and-Blockchain/F23_FamilyPlus.git
+  ```
+4. Set up [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html).
+5. Set up [CUDA](https://developer.nvidia.com/cuda-downloads) environment (optional step if run the chatbot by using CPU).
+6. Install [PyTorch](https://pytorch.org/get-started/locally/).
+
+#### Frontend Install
+
+To install Family+, follow these steps:
+
+1. Clone the repository:
+
+2. Navigate into the project directory:
+
+3. Install the dependencies:
+
+```bash
+npm install
+```
+
+4. To run Family+, use the following command:
+```bash
+npm run dev
+```
+5. The application will start running at `http://localhost:3000` (or another port if you've configured it differently).
+
+6. To create a production build of Family+, use the following command:
+```bash
+npm run build
+```
+
+#### Chatbot Install
+1. Open the terminal in the location where you download our repository.
+2. Set up conda environment.
+```bash
+conda create --name FamilyPlus python=3.11
+conda activate FamilyPlus
+```
+3. Download required python packages.
+```bash
+pip install -r requirements.txt
+```
+4. Run the chatbot with model files on HuggingFace,
+```bash
+python run_chatbot.py 
+``` 
+&emsp;&emsp;&ensp;&nbsp;or Locally. You're not require to download all model files from HuggingFace.
+```bash
+python run_chatbot_local.py
+```
+5. Now you can type your question on the terminal. Type stop to end. Here is what does it should looks like:
+<img src="./Diagrams/chatp1.png" alt="drawing" width="800"/>
+<img src="./Diagrams/chatp2.png" alt="drawing" width="800"/>
+
+
+#### Blockchain Install
+
+
+---
 
 ### License
 
